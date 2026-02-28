@@ -15,6 +15,13 @@ run/main_scene="uid://jd2u34mu6jw7"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/extend_to_title=true
+window/stretch/aspect="keep_width"
+
 [dotnet]
 
 project/assembly_name="SideScroller"
