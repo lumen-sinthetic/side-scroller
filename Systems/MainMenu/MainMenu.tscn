@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cjjrcvjn2veie"]
+
+[ext_resource type="Script" uid="uid://ckrrhxy1646dy" path="res://Systems/MainMenu/Scripts/MainMenu.cs" id="1_o6mmj"]
+
+[node name="MainMenu" type="Control" unique_id=2141135667 node_paths=PackedStringArray("PlayButton", "OptionsButton", "ExitButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o6mmj")
+PlayButton = NodePath("PlayButton")
+OptionsButton = NodePath("SettingsButton")
+ExitButton = NodePath("ExitButton")
+
+[node name="PlayButton" type="Button" parent="." unique_id=1669866258]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.5
+offset_top = 200.0
+offset_right = 95.5
+offset_bottom = 231.0
+grow_horizontal = 2
+text = "играть"
+
+[node name="SettingsButton" type="Button" parent="." unique_id=166883744]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.5
+offset_top = 250.0
+offset_right = 95.5
+offset_bottom = 281.0
+grow_horizontal = 2
+text = "настройки
+"
+
+[node name="ExitButton" type="Button" parent="." unique_id=1028683713]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.5
+offset_top = 300.0
+offset_right = 95.5
+offset_bottom = 331.0
+grow_horizontal = 2
+text = "выход
+"
