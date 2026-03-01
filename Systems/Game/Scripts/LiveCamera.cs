@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Camera : Camera2D
+public partial class LiveCamera : Camera2D
 {
   [Export]
   public Node2D Target = null!;
@@ -11,6 +11,12 @@ public partial class Camera : Camera2D
   private const float _horizontalTreshold = 400f;
   private const float _maxHorizontalCameraOffset = 210f;
   private const float _maxVerticalCameraOffset = 120f;
+
+
+  public override void _Ready()
+  {
+    MakeCurrent();
+  }
 
 
   // Called every frame. 'delta' is the elapsed time since the previous frame.
