@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://jd2u34mu6jw7"]
+
+[ext_resource type="PackedScene" uid="uid://curlov4ssisot" path="res://Levels/Rooms/Room1/Room1.tscn" id="1_vxy7d"]
+[ext_resource type="PackedScene" uid="uid://bsfm7wyssiyap" path="res://Characters/Player/Player.tscn" id="2_hgxjp"]
+[ext_resource type="Script" uid="uid://k0rg7i5au3ab" path="res://Systems/Game/Scripts/LiveCamera.cs" id="3_hci3s"]
+
+[node name="Main" type="Node2D" unique_id=1752015423]
+
+[node name="Level1" parent="." unique_id=1064044481 instance=ExtResource("1_vxy7d")]
+position = Vector2(-1, -14)
+
+[node name="Player" parent="." unique_id=151319200 instance=ExtResource("2_hgxjp")]
+position = Vector2(587, 439)
+floor_max_angle = 1.5934856
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2089637943 node_paths=PackedStringArray("Target")]
+position = Vector2(639, 360)
+script = ExtResource("3_hci3s")
+Target = NodePath("../Player")
