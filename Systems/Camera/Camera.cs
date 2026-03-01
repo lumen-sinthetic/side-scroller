@@ -7,7 +7,6 @@ public partial class Camera : Camera2D
 	public Node2D Target = null!;
 
 
-
 	private const float _cameraSpeed = 1.5f;
 	private const float _verticalTreshold = 125f;
 	private const float _horizontalTreshold = 400f;
@@ -18,17 +17,22 @@ public partial class Camera : Camera2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		HandleCursorMove(delta);
+		if (Target is CharacterBody2D character)
+		{
+			HandleCursorMove(character, (float)delta);
+		}
+		else
+		{
+			Position = Target.Position;
+		}
 	}
 
 
 
-	private void HandleCursorMove(double delta)
+	private void HandleCursorMove(CharacterBody2D target, float delta)
 	{
-		var targetPos = Target.Position;
+		var targetPos = target.Position;
 		var cursorPos = GetLocalMousePosition();
-
-		GD.Print(cursorPos);
 
 		if (Math.Abs(cursorPos.X) >= _horizontalTreshold)
 		{
@@ -43,17 +47,7 @@ public partial class Camera : Camera2D
 			targetPos.Y += offset * Math.Sign(cursorPos.Y);
 		}
 
-
-		float speed = _cameraSpeed * (float)delta;
-
-
-		if (Target is CharacterBody2D character)
-		{
-			Position = Position.Lerp(targetPos, character.Velocity == Vector2.Zero ? speed : speed * 2);
-		}
-		else
-		{
-			Position = Position.Lerp(targetPos, speed);
-		}
+		float speedMultiplier = target.Velocity == Vector2.Zero ? 1f : 2f;
+		Position = Position.Lerp(targetPos, _cameraSpeed * delta * speedMultiplier);
 	}
 }
