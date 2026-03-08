@@ -1,10 +1,13 @@
-using Godot;
 using System;
+using Godot;
 
 public partial class Player : CharacterBody2D
 {
-  public const float Speed = 300.0f;
-  public const float JumpVelocity = -400.0f;
+  private const float _speed = 300.0f;
+  private const float _jumpVelocity = -400.0f;
+  private const float _wallJumpVelocity = 300f;
+  private const float _acceleration = 1000f;
+
 
   public override void _PhysicsProcess(double delta)
   {
@@ -12,35 +15,59 @@ public partial class Player : CharacterBody2D
 
 
     // Add the gravity.
-    if (!IsOnFloor())
-    {
-      velocity += GetGravity() * (float)delta;
-    }
+    HandleGravity(ref velocity, (float)delta);
 
-
-    // Handle Jump.
-    if (IsOnFloor()) HandleJump(ref velocity);
 
     // Get the input direction and handle the movement/deceleration.
     // As good practice, you should replace UI actions with custom gameplay actions.
     HandleMovement(ref velocity);
 
+    // Handle Jump.
+    HandleJump(ref velocity, (float)delta);
+
     Velocity = velocity;
 
     MoveAndSlide();
-
-
-    // GD.Print("IsOnFloor: ", IsOnFloor());
-    // GD.Print("IsOnWall: ", IsOnWall());
   }
 
 
-  private void HandleJump(ref Vector2 velocity)
+  public override void _Input(InputEvent @event)
   {
-    if (Input.IsActionJustPressed("ui_select") || Input.IsActionJustPressed("ui_up"))
+    if (@event.IsActionPressed("ui_select"))
     {
-      velocity.Y = JumpVelocity;
     }
+  }
+
+  public override void _Process(double delta)
+  {
+  }
+
+
+  private void HandleGravity(ref Vector2 velocity, float delta)
+  {
+    if (!IsOnFloor())
+    {
+      var gravity = GetGravity();
+      velocity += gravity * (float)delta;
+    }
+  }
+
+
+  private void HandleJump(ref Vector2 velocity, float delta)
+  {
+    if (!(Input.IsActionJustPressed("ui_select") || Input.IsActionJustPressed("ui_up"))) return;
+
+    if (IsOnWall())
+    {
+
+
+      velocity.Y = _jumpVelocity;
+      velocity.X += _wallJumpVelocity * Math.Sign(GetWallNormal().X);
+      // velocity.X = velocity.X = Mathf.Lerp(velocity.X, _wallJumpVelocity, delta);
+      return;
+    }
+
+    if (IsOnFloor()) velocity.Y = _jumpVelocity;
   }
 
   private void HandleMovement(ref Vector2 velocity)
@@ -48,9 +75,8 @@ public partial class Player : CharacterBody2D
     float direction = Input.GetAxis("ui_left", "ui_right");
 
     if (direction != 0)
-      velocity.X = direction * Speed;
+      velocity.X = direction * _speed;
     else
-      velocity.X = Mathf.MoveToward(direction, 0, Speed);
-
+      velocity.X = Mathf.MoveToward(direction, 0, _speed);
   }
 }

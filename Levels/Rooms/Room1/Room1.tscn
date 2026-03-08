@@ -23,10 +23,26 @@ texture = SubResource("PlaceholderTexture2D_qfsh3")
 position = Vector2(0.875, -1.250061)
 shape = SubResource("RectangleShape2D_o6hgk")
 
-[node name="Wall" type="StaticBody2D" parent="." unique_id=732595744]
-position = Vector2(1440, 209)
+[node name="Wall2" type="StaticBody2D" parent="." unique_id=455740674]
+position = Vector2(44, 617)
 rotation = 1.5707964
 disable_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall2" unique_id=43616631]
+position = Vector2(-0.0625, -2.250002)
+scale = Vector2(1651.875, 43.499996)
+texture = SubResource("PlaceholderTexture2D_qfsh3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" unique_id=1066813696]
+position = Vector2(0.875, -1.25)
+shape = SubResource("RectangleShape2D_0uesw")
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=732595744]
+position = Vector2(1210, 574)
+rotation = 1.5707964
+disable_mode = 1
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Wall" unique_id=1925463797]
 position = Vector2(-0.0625, -2.250002)
