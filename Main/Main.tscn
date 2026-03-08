@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://dvd7554gin103" path="res://Main/Scripts/Main.cs" id="1_83ytx"]
 [ext_resource type="PackedScene" uid="uid://cjjrcvjn2veie" path="res://Systems/MainMenu/MainMenu.tscn" id="1_lxy7q"]
 
-[node name="Main" type="Node2D" unique_id=1976258813]
+[node name="Main" type="Node2D" unique_id=1976258813 node_paths=PackedStringArray("Menu")]
 script = ExtResource("1_83ytx")
+Menu = NodePath("CanvasLayer/MainMenu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=669469046]
 

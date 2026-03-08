@@ -28,7 +28,7 @@ public partial class MainMenu : Control
   {
   }
 
-  private void HandlePlayGame() => EmitSignal("play_game");
+  private void HandlePlayGame() => EmitSignal(nameof(PlayGame));
 
   private void HandleOptionsOpen() { }
 
