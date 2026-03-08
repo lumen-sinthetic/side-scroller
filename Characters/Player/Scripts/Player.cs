@@ -18,10 +18,7 @@ public partial class Player : CharacterBody2D
 
 
     // Handle Jump.
-    if (Input.IsActionJustPressed("ui_up") && IsOnFloor())
-    {
-      velocity.Y = JumpVelocity;
-    }
+    if (IsOnFloor()) HandleJump(ref velocity);
 
     // Get the input direction and handle the movement/deceleration.
     // As good practice, you should replace UI actions with custom gameplay actions.
@@ -37,5 +34,15 @@ public partial class Player : CharacterBody2D
 
     Velocity = velocity;
     MoveAndSlide();
+  }
+
+
+  private void HandleJump(ref Vector2 velocity)
+  {
+    if (Input.IsActionJustPressed("ui_select") || Input.IsActionJustPressed("ui_up"))
+    {
+      GD.Print("Jump");
+      velocity.Y = JumpVelocity;
+    }
   }
 }
