@@ -1,44 +1,38 @@
 [gd_scene format=3 uid="uid://curlov4ssisot"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfsh3"]
-size = Vector2(2266, 46.25)
-
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qfsh3"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_a3ru4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6hgk"]
+size = Vector2(1652, 46.25)
 
-[node name="Level1" type="StaticBody2D" unique_id=880145151]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0uesw"]
+size = Vector2(1652, 46.25)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1792453884]
-position = Vector2(1132, 627)
-shape = SubResource("RectangleShape2D_qfsh3")
+[node name="Level1" type="Node2D" unique_id=587440151]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=306179049]
-position = Vector2(1130.0625, 626)
-scale = Vector2(2263.875, 43.499996)
+[node name="Floor" type="StaticBody2D" parent="." unique_id=346645081]
+position = Vector2(766, 700)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=306179049]
+position = Vector2(-0.0625, -2.250002)
+scale = Vector2(1651.875, 43.499996)
 texture = SubResource("PlaceholderTexture2D_qfsh3")
 
-[node name="BgPlaceholder1" type="Sprite2D" parent="." unique_id=1923531284]
-position = Vector2(1952, 470)
-scale = Vector2(49.749996, 46.749985)
-texture = SubResource("PlaceholderTexture2D_a3ru4")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1792453884]
+position = Vector2(0.875, -1.250061)
+shape = SubResource("RectangleShape2D_o6hgk")
 
-[node name="BgPlaceholder2" type="Sprite2D" parent="." unique_id=962237685]
-position = Vector2(1546, 468)
-scale = Vector2(49.749996, 46.749985)
-texture = SubResource("PlaceholderTexture2D_a3ru4")
+[node name="Wall" type="StaticBody2D" parent="." unique_id=732595744]
+position = Vector2(1440, 209)
+rotation = 1.5707964
+disable_mode = 1
 
-[node name="BgPlaceholder3" type="Sprite2D" parent="." unique_id=100506716]
-position = Vector2(1202, 460)
-scale = Vector2(49.749996, 46.749985)
-texture = SubResource("PlaceholderTexture2D_a3ru4")
+[node name="Sprite2D" type="Sprite2D" parent="Wall" unique_id=1925463797]
+position = Vector2(-0.0625, -2.250002)
+scale = Vector2(1651.875, 43.499996)
+texture = SubResource("PlaceholderTexture2D_qfsh3")
 
-[node name="BgPlaceholder4" type="Sprite2D" parent="." unique_id=827059608]
-position = Vector2(839.99994, 450.00003)
-scale = Vector2(49.749996, 46.749985)
-texture = SubResource("PlaceholderTexture2D_a3ru4")
-
-[node name="BgPlaceholder5" type="Sprite2D" parent="." unique_id=1158591858]
-position = Vector2(502, 436)
-scale = Vector2(49.749996, 46.749985)
-texture = SubResource("PlaceholderTexture2D_a3ru4")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=641520813]
+position = Vector2(0.875, -1.25)
+shape = SubResource("RectangleShape2D_0uesw")

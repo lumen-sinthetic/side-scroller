@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SideScroller"
-run/main_scene="uid://dnl7n5yiyrh1"
+run/main_scene="uid://jd2u34mu6jw7"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

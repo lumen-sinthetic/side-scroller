@@ -9,11 +9,10 @@
 [node name="Level1" parent="." unique_id=1064044481 instance=ExtResource("1_vxy7d")]
 position = Vector2(-1, -14)
 
-[node name="Player" parent="." unique_id=151319200 instance=ExtResource("2_hgxjp")]
-position = Vector2(587, 439)
-floor_max_angle = 1.5934856
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2089637943 node_paths=PackedStringArray("Target")]
 position = Vector2(639, 360)
 script = ExtResource("3_hci3s")
 Target = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=151319200 instance=ExtResource("2_hgxjp")]
+position = Vector2(587, 439)

@@ -5,7 +5,7 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t1ilr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ht6wf"]
-size = Vector2(40, 100)
+size = Vector2(40, 40)
 
 [node name="Player" type="CharacterBody2D" unique_id=1362905022]
 script = ExtResource("1_ht6wf")
@@ -15,4 +15,5 @@ scale = Vector2(50, 100)
 texture = SubResource("PlaceholderTexture2D_t1ilr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=328456831]
+position = Vector2(0, 30.5)
 shape = SubResource("RectangleShape2D_ht6wf")

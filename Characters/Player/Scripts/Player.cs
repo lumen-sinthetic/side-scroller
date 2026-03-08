@@ -10,6 +10,7 @@ public partial class Player : CharacterBody2D
   {
     Vector2 velocity = Velocity;
 
+
     // Add the gravity.
     if (!IsOnFloor())
     {
@@ -22,18 +23,15 @@ public partial class Player : CharacterBody2D
 
     // Get the input direction and handle the movement/deceleration.
     // As good practice, you should replace UI actions with custom gameplay actions.
-    Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-    if (direction != Vector2.Zero)
-    {
-      velocity.X = direction.X * Speed;
-    }
-    else
-    {
-      velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-    }
+    HandleMovement(ref velocity);
 
     Velocity = velocity;
+
     MoveAndSlide();
+
+
+    // GD.Print("IsOnFloor: ", IsOnFloor());
+    // GD.Print("IsOnWall: ", IsOnWall());
   }
 
 
@@ -41,8 +39,18 @@ public partial class Player : CharacterBody2D
   {
     if (Input.IsActionJustPressed("ui_select") || Input.IsActionJustPressed("ui_up"))
     {
-      GD.Print("Jump");
       velocity.Y = JumpVelocity;
     }
+  }
+
+  private void HandleMovement(ref Vector2 velocity)
+  {
+    float direction = Input.GetAxis("ui_left", "ui_right");
+
+    if (direction != 0)
+      velocity.X = direction * Speed;
+    else
+      velocity.X = Mathf.MoveToward(direction, 0, Speed);
+
   }
 }

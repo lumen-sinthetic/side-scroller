@@ -27,7 +27,7 @@ public partial class Main : Node
   }
 
 
-  private async void OnGameStart()
+  private void OnGameStart()
   {
     var packed = ResourceLoader.Load<PackedScene>(_gameScenePath);
 
